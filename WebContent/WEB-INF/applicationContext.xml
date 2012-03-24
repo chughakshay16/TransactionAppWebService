@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans>
+	<bean id="groupModifier" class="com.project.business.impl.GroupModifierImpl">
+		<property name="accountManager">
+			<ref local="accountManager" />
+		</property>
+		<property name="userManager">
+			<ref local="userManager" />
+		</property>
+		<property name="creator">
+			<ref local="groupCreator" />
+		</property>
+		<property name="groupDao">
+			<ref local="groupDao" />
+		</property>
+		<property name="accountDao">
+			<ref local="accountDao" />
+		</property>
+		<property name="utils">
+			<ref local="userUtils" />
+		</property>
+	</bean>
+	<bean id="userUtils" class="com.project.utils.UserUtils">
+		<property name="accountDao">
+			<ref local="accountDao"/>
+		</property>
+		<property name="transactionDao">
+			<ref local="transactionDao"/>
+		</property>
+		<property name="groupDao">
+			<ref local="groupDao"/>
+		</property>
+		<property name="addressBookDao">
+			<ref local="addressBookDao"/>
+		</property>
+		<property name="suggestionDao">
+			<ref local="suggestionDao"/>
+		</property>
+	</bean>
+	<bean id="accountManager" class="com.project.manager.impl.AccountManagerImpl">
+		<property name="userIdHashtable">
+			<ref local="userIdHashtable"/>
+		</property>
+		<property name="userNameHashtable">
+			<ref local="userNameHashtable"/>
+		</property>
+	</bean>
+	<bean id="userIdHashtable" class="java.util.Hashtable"/>
+	<bean id="userNameHashtable" class="java.util.Hashtable"/>
+	<bean id="userManager" class="com.project.manager.impl.UserManagerImpl">
+		<property name="usersHashtable">
+			<ref local="usersHashtable"/>
+		</property>
+	</bean>
+	<bean id="usersHashtable" class="java.util.Hashtable"/>
+	<bean id="groupCreator" class="com.project.manager.impl.GroupCreatorImpl">
+	</bean>
+	<bean id="groupDao" class="com.project.dao.impl.GroupDaoImpl">
+	</bean>
+	<bean id="register" class="com.project.business.impl.RegisterImpl">
+		<property name="accountManager">
+			<ref local="accountManager" />
+		</property>
+		<property name="userManager">
+			<ref local="userManager" />
+		</property>
+		<property name="accountDao">
+			<ref local="accountDao" />
+		</property>
+		<property name="addressBookDao">
+			<ref local="addressBookDao" />
+		</property>
+		<property name="utils">
+			<ref local="userUtils" />
+		</property>
+		<property name="createTables">
+			<ref local="createTablesForUser" />
+		</property>
+	</bean>
+	<bean id="createTablesForUser" class="com.project.dao.impl.CreateTablesForUserImpl"/>
+	<bean id="accountDao" class="com.project.dao.impl.AccountDaoImpl">
+	</bean>
+	<bean id="addressBookDao" class="com.project.dao.impl.AddressBookDaoImpl">
+	</bean>
+	<bean id="synchronizer" class="com.project.business.impl.SynchronizerImpl">
+		<property name="accountManager">
+			<ref local="accountManager" />
+		</property>
+		<property name="userManager">
+			<ref local="userManager" />
+		</property>
+		<property name="transactionDao">
+			<ref local="transactionDao" />
+		</property>
+		<property name="groupDao">
+			<ref local="groupDao" />
+		</property>
+		<property name="addressBookDao">
+			<ref local="addressBookDao" />
+		</property>
+		<property name="suggestionDao">
+			<ref local="suggestionDao" />
+		</property>
+		<property name="accountDao">
+			<ref local="accountDao" />
+		</property>
+		<property name="utils">
+			<ref local="userUtils" />
+		</property>
+	</bean>
+	<bean id="transactionDao" class="com.project.dao.impl.TransactionDaoImpl">
+	</bean>
+	<bean id="transactionModifier" class="com.project.business.impl.TransactionModifierImpl">
+		<property name="accountManager">
+			<ref local="accountManager" />
+		</property>
+		<property name="userManager">
+			<ref local="userManager" />
+		</property>
+		<property name="creator">
+			<ref local="transactionCreator" />
+		</property>
+		<property name="transactionDao">
+			<ref local="transactionDao" />
+		</property>
+		<property name="groupDao">
+			<ref local="groupDao" />
+		</property>
+		<property name="accountDao">
+			<ref local="accountDao" />
+		</property>	
+		<property name="utils">
+			<ref local="userUtils" />
+		</property>
+	</bean>
+	<bean id="transactionCreator" class="com.project.manager.impl.TransactionCreatorImpl">
+	</bean>
+	<bean id="suggestionRouter" class="com.project.business.impl.SuggestionRouterImpl">
+		<property name="accountManager">
+			<ref local="accountManager" />
+		</property>
+		<property name="userManager">
+			<ref local="userManager" />
+		</property>
+		<property name="suggestionDao">
+			<ref local="suggestionDao" />
+		</property>
+		<property name="suggestionCreator">
+			<ref local="suggestionCreator" />
+		</property>
+		<property name="notificationCreator">
+			<ref local="notificationCreator" />
+		</property>
+		<property name="accountDao">
+			<ref local="accountDao" />
+		</property>
+		<property name="utils">
+			<ref local="userUtils" />
+		</property>
+	</bean>
+	<bean id="suggestionCreator" class="com.project.manager.impl.SuggestionCreatorImpl">
+	</bean>
+	<bean id="notificationCreator" class="com.project.manager.impl.NotificationCreatorImpl">
+	</bean>
+	<bean id="suggestionDao" class="com.project.dao.impl.SuggestionDaoImpl">
+	</bean>
+	<bean id="tagModifier" class="com.project.business.impl.TagModifierImpl">
+		<property name="accountManager">
+			<ref local="accountManager" />
+		</property>
+		<property name="userManager">
+			<ref local="userManager" />
+		</property>
+		<property name="transactionDao">
+			<ref local="transactionDao" />
+		</property>
+		<property name="accountDao">
+			<ref local="accountDao" />
+		</property>
+		<property name="utils">
+			<ref local="userUtils" />
+		</property>
+	</bean>
+</beans>
