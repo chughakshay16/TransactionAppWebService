@@ -1,0 +1,1 @@
+This code contains the server side component of the application Transaction App for android. It also contains some of the test scenarios that a normal android client would perform on such a service.
